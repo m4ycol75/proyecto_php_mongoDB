@@ -18,18 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar nueva tarea</title>
+    <title>Registrar Nueva Infraccion</title>
     <link rel="stylesheet" href="public/css/styles.css">
 </head>
 
 <body>
-    <h1>Agregar nueva tarea</h1>
+    <h1>Registrar Nueva Infracción</h1>
     <?php if (isset($error)): ?>
     <div class="error"><?php echo $error; ?></div>
 <?php endif; ?>
 
     <form action="" method="post">
-        <label for="">Curso:
+        <label for="">Infraccion:
             <input type="text" name="curso">
         </label><br><br>
         <label for="">Descripcion:
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="date" name="fechaentrega">
         </label><br><br>
 
-        <input type="submit" value="Crear Tarea">
+        <input type="submit" value="Crear Imfraccion">
         
         <button><a href="index.php">Volver</button>
         </a>

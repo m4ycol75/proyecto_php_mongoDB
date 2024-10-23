@@ -33,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="container">
-        <h1>Editar Tarea</h1>
+        <h1>Editar Infraccion</h1>
         <?php if (isset($error)): ?>
             <div class="error"><?php echo $error; ?></div>
         <?php endif; ?>
         <form method="POST">
-            <label>Curso: <input type="text" name="curso" value="<?php echo htmlspecialchars($tarea['curso']); ?>" required></label>
+            <label>Infraccion: <input type="text" name="curso" value="<?php echo htmlspecialchars($tarea['curso']); ?>" required></label>
             <label>Descripción: <textarea name="descripcion" required><?php echo htmlspecialchars($tarea['descripcion']); ?></textarea></label>
-            <label>Fecha de Entrega: <input type="date" name="fechaEntrega" value="<?php echo formatDate($tarea['fechaEntrega']); ?>" required></label>
+            <label>Fecha de Emision: <input type="date" name="fechaEntrega" value="<?php echo formatDate($tarea['fechaEntrega']); ?>" required></label>
             <label>Completada: <input type="checkbox" name="completada" <?php echo $tarea['completada'] ? 'checked' : ''; ?>></label>
             <input type="submit" value="Actualizar Tarea">
         </form>

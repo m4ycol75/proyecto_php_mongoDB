@@ -16,7 +16,7 @@ $tareas = obtenerTareas();
 
 <body>
     <div class="container">
-        <h1>Gestión de Tareas de Cursos</h1>
+        <h1>Gestión de Infracciones de Transito</h1>
 
         <?php if (isset($mensaje)): ?>
             <div class="<?php echo $count > 0 ? 'success' : 'error'; ?>">
@@ -24,17 +24,17 @@ $tareas = obtenerTareas();
             </div>
         <?php endif; ?>
 
-        <a href="agregar_tarea.php" class="button">Agregar Nueva Tarea</a>
+        <a href="agregar_infraccion.php" class="button">Agregar Nueva Infraccion</a>
 
-        <h2>Lista de Tareas</h2>
+        <h2>Lista de Infraciones</h2>
         <!-- ... -->
 
         <table>
             <tr>
-                <th>Curso</th>
+                <th>Infraccion</th>
                 <th>Descripción</th>
-                <th>Fecha de Entrega</th>
-                <th>Completada</th>
+                <th>Fecha de Infraccion</th>
+                <th>Cancelado</th>
                 <th>Acciones</th>
             </tr>
             <?php foreach ($tareas as $tarea): ?>
@@ -45,7 +45,8 @@ $tareas = obtenerTareas();
                     <td><?php echo $tarea['completada'] ? 'Sí' : 'No'; ?></td>
                     <td class="actions">
                         <a href="editar_tarea.php?id=<?php echo $tarea['_id']; ?>" class="button">Editar</a>
-                        <a href="index.php?accion=eliminar&id=<?php echo $tarea['_id']; ?>" class="button" onclick="return confirm('¿Estás seguro de que quieres eliminar esta tarea?');">Eliminar</a>
+                        <a href="index.php?accion=eliminar&id=<?php echo $tarea['_id']; ?>" class="button" 
+                        onclick="return confirm('¿Estás seguro de que quieres eliminar esta tarea?');">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
