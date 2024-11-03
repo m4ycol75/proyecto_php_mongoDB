@@ -2,49 +2,44 @@
 require_once __DIR__ . '/includes/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = crearTarea($_POST['curso'], $_POST['descripcion'], $_POST['fechaEntrega']);
+    $id = crearInfraccion($_POST['infraccion'], $_POST['descripcion'], $_POST['costo_infraccion'], $_POST['fechaEntrega']);
     if ($id) {
-        header("Location: index.php?mensaje=Tarea creada con éxito");
+        header("Location: index.php");
         exit;
     } else {
         $error = "No se pudo crear la tarea.";
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Nueva Infraccion</title>
+    <title>Agregar Nueva Infraccion</title>
     <link rel="stylesheet" href="public/css/styles.css">
 </head>
 
 <body>
-    <h1>Registrar Nueva Infracción</h1>
-    <?php if (isset($error)): ?>
-    <div class="error"><?php echo $error; ?></div>
-<?php endif; ?>
+    <div class="container">
+        <h1>Agregar Nueva Infraccion</h1>
 
-    <form action="" method="post">
-        <label for="">Infraccion:
-            <input type="text" name="curso">
-        </label><br><br>
-        <label for="">Descripcion:
-            <input type="text" name="descripcion">
-        </label><br><br>
-        <label for="">Fecha de Entrega:
-            <input type="date" name="fechaentrega">
-        </label><br><br>
+        <?php if (isset($error)) : ?>
+            <p style="color: red;"><?php echo $error; ?></p>
+        <?php endif; ?>
 
-        <input type="submit" value="Crear Imfraccion">
-        
-        <button><a href="index.php">Volver</button>
-        </a>
-    </form>
+        <form method="POST">
+            <label>Infraccion: <input type="text" name="infraccion" required></label><br>
+            <label>Descripción: <textarea name="descripcion" required></textarea></label><br>
+            <label>Costo de Infraccion: <input type="number" name="costo_infraccion" required></label><br>
+            <label>Fecha de Entrega: <input type="date" name="fechaEntrega" required></label><br>
+            <input type="submit" value="Generar Infraccion">
+        </form>
 
+        <a href="index.php">Volver a la lista de Infracciones</a>
+    </div>
 </body>
 
 </html>

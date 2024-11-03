@@ -5,19 +5,19 @@ if (!isset($_GET['id'])) {
     header("Location: index.php");
     exit;
 }
-$tarea = obtenerTareaPorId($_GET['id']);
+$Infraccion = obtenerInfraccionPorId($_GET['id']);
 
-if (!$tarea) {
+if (!$Infraccion) {
     header("Location: index.php?mensaje=Tarea no encontrada");
     exit;
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $count = actualizarTarea($_GET['id'], $_POST['curso'], $_POST['descripcion'], $_POST['fechaEntrega'], isset($_POST['completada']));
+    $count = actualizarInfraccion($_GET['id'], $_POST['infraccion'], $_POST['descripcion'], $_POST['costo_infraccion'], $_POST['fechaEntrega'], isset($_POST['cancelado']));
     if ($count > 0) {
-        header("Location: index.php?mensaje=Tarea actualizada con éxito");
+        header("Location: index.php?mensaje=Infraccion actualizada con éxito");
         exit;
     } else {
-        $error = "No se pudo actualizar la tarea.";
+        $error = "No se pudo actualizar la Infraccion.";
     }
 }
 ?>
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Tarea</title>
+    <title>Editar Infraccion</title>
     <link rel="stylesheet" href="public/css/styles.css">
 </head>
 
@@ -38,13 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="error"><?php echo $error; ?></div>
         <?php endif; ?>
         <form method="POST">
-            <label>Infraccion: <input type="text" name="curso" value="<?php echo htmlspecialchars($tarea['curso']); ?>" required></label>
-            <label>Descripción: <textarea name="descripcion" required><?php echo htmlspecialchars($tarea['descripcion']); ?></textarea></label>
-            <label>Fecha de Emision: <input type="date" name="fechaEntrega" value="<?php echo formatDate($tarea['fechaEntrega']); ?>" required></label>
-            <label>Completada: <input type="checkbox" name="completada" <?php echo $tarea['completada'] ? 'checked' : ''; ?>></label>
-            <input type="submit" value="Actualizar Tarea">
+            <label>Infraccion: <input type="text" name="infraccion" value="<?php echo htmlspecialchars($Infraccion['infraccion']); ?>" required></label>
+            <label>Descripción: <textarea name="descripcion" required><?php echo htmlspecialchars($Infraccion['descripcion']); ?></textarea></label>
+            <label>Infraccion: <input type="text" name="costo_infraccion" value="<?php echo htmlspecialchars($Infraccion['costo_infraccion']); ?>" required></label>
+            <label>Fecha de Emision: <input type="date" name="fechaEntrega" value="<?php echo formatDate($Infraccion['fechaEntrega']); ?>" required></label>
+            <label>Infraccion Cancelada: <input type="checkbox" name="cancelado" <?php echo $Infraccion['cancelado'] ? 'checked' : ''; ?>></label>
+            <input type="submit" value="Actualizar Infraccion">
         </form>
-        <a href="index.php" class="button">Volver a la lista de tareas</a>
+        <a href="index.php" class="button">Volver a la lista de Infracciones</a>
     </div>
 </body>
 

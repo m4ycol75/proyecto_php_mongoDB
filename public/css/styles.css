@@ -6,7 +6,7 @@ body {
     background-color: #8b8585;
 }
 .container {
-    max-width: 800px;
+    max-width: 1200px; /* Cambia 800px a 1200px o cualquier otro valor que desees */
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
@@ -20,7 +20,7 @@ form {
     margin-bottom: 20px;
 }
 
-input[type="text"], textarea, input[type="date"] {
+input[type="text"], textarea, input[type="date"], input[type="number"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
